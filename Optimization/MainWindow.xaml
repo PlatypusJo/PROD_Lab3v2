@@ -1,0 +1,57 @@
+﻿<Window x:Class="Optimization.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Optimization"
+        xmlns:vm="clr-namespace:Optimization.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBlock Text="Затраты дерева на стол: "></TextBlock>
+                    <TextBox Text="{Binding WoodForTable}" MinWidth="50"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBlock Text="Затраты стали на стол: "></TextBlock>
+                    <TextBox Text="{Binding SteelForTable}" MinWidth="50"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"  Margin="5">
+                    <TextBlock Text="Формула прибыли: "></TextBlock>
+                    <TextBox Text="{Binding TablesProfit}" MinWidth="100"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBlock Text="Затраты дерева на стул: "></TextBlock>
+                    <TextBox Text="{Binding WoodForChair}" MinWidth="50"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBlock Text="Затраты стали на стул: "></TextBlock>
+                    <TextBox Text="{Binding SteelForChair}" MinWidth="50"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBlock Text="Формула прибыли: "></TextBlock>
+                    <TextBox Text="{Binding ChairsProfit}" MinWidth="100"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Дерева в месяц: "></TextBlock>
+                <TextBox Text="{Binding WoodMonthNum}" MinWidth="50"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Стали в месяц: "></TextBlock>
+                <TextBox Text="{Binding SteelMonthNum}" MinWidth="50"></TextBox>
+            </StackPanel>
+            <Button Content="Рассчитать" Command="{Binding CalculationCommand}" Margin="5"></Button>
+            <TextBlock Text="{Binding Result}" Margin="5"></TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>
