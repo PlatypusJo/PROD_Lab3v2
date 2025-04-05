@@ -13,4 +13,8 @@
     <PackageReference Include="MathNet.Symbolics" Version="0.25.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Lab4\QuadraticOptimizationSolver\QuadraticOptimizationSolver.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,7 +1,8 @@
 ﻿using MathNet.Symbolics;
 using Optimization.Commands;
-using Optimization.Interfaces;
-using Optimization.QuadraticOptimization;
+using QuadraticOptimizationSolver.DataModels;
+using QuadraticOptimizationSolver.Interfaces;
+using QuadraticOptimizationSolver.Solvers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -123,9 +124,10 @@ namespace Optimization.ViewModels
             var secondFunc = SymbolicExpression.Parse(ChairsProfit);
             var profitFunc = Infix.ParseOrThrow(("x" * firstFunc + "y" * secondFunc).ToString());
             var simplifiedProfitFunc = SymbolicExpression.Parse(Infix.Format(Algebraic.Expand(profitFunc)));
+            FunctionMinimizationDataModel dataEntity = new(simplifiedProfitFunc.ToString(), WoodForTable, WoodForChair, WoodMonthNum, SteelForTable, SteelForChair, SteelMonthNum);
 
-            IQuadraticOptimizationSolver solver = new QuadraticOptimizationSolver();
-            var optimalMaxValues = solver.Optimize(simplifiedProfitFunc.ToString(), WoodForTable, WoodForChair, WoodMonthNum, SteelForTable, SteelForChair, SteelMonthNum);
+            IQuadraticOptimizationSolver<FunctionMinimizationDataModel> solver = new FunctionMinimizationSolver();
+            var optimalMaxValues = solver.Solve(dataEntity);
             // for real objects values should be round with a deficiency
             Result = $"Столов: {Math.Floor(optimalMaxValues[0])}, стульев: {Math.Floor(optimalMaxValues[1])}";
         }
