@@ -1,3 +1,6 @@
 [submodule "QuadraticOptimizationLib"]
 	path = Lab4_PROD
 	url = https://github.com/PlatypusJo/Lab4_PROD.git
+[submodule "Lab4_PROD"]
+	path = Lab4_PROD
+	url = https://github.com/PlatypusJo/Lab4_PROD.git
